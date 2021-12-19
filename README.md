@@ -5,7 +5,7 @@
 4. Create a user; python manage.py createsuperuser
 
 ## API Endpoints
-  /movies/ - List movies (GET) or create new movie entry (POST; must be logged in)
+  /movies/ - List movies (GET), search movies (GET; via the ?search={search-term} URI parameter) or create new movie entry (POST; must be logged in)
 
   /movies/{movie-id} - See details of movie whose database primary key is {movie-id} (GET), edit movie details (PUT; must be logged in), delete existing movie (DELETE; must be logged in)
   
