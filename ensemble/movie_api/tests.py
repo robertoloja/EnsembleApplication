@@ -31,12 +31,10 @@ class APITests(TestCase):
     content = io.BytesIO(response.content)
     return JSONParser().parse(content)
 
-
   def test_api_get(self):
     all_movies = self.get_json_response('/movies/')
     self.assertEqual(len(all_movies), 2)
   
-
   def test_api_post(self):
     new_movie = {
       "title": "new",
@@ -45,25 +43,19 @@ class APITests(TestCase):
       "release_year": "2020-02-02",
     }
     response = APIClient().post('/movies/', new_movie, format='json')
-
-    # unauthenticated POST request fails
-    self.assertEqual(response.status_code, 403)
+    self.assertEqual(response.status_code, 403) # unauthenticated POST request fails
 
     user = User.objects.first()
     view = MovieList.as_view()
     request = APIRequestFactory().post('/movies/', new_movie, format='json')
     force_authenticate(request, user)
     response = view(request)
+    self.assertEqual(response.status_code, 201) # authenticated users can make POST requests
 
-    # authenticated users can make POST requests
-    self.assertEqual(response.status_code, 201)
-
-  
   def test_search(self):
     search_results = self.get_json_response('/movies/?search=movie')
     self.assertEqual(len(search_results), 1)
   
-
   def test_like_movie(self):
     movie = Movie.objects.first()
     original_number_of_likes = movie.likes
