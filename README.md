@@ -7,11 +7,11 @@
 ## API endpoints
   /movies/ - List movies (GET) or create new movie entry (POST; must be logged in)
 
-  /movies/<movie-id> - See details of movie whose database primary key is <movie-id>, or edit movie details (must be logged in)
+  /movies/{movie-id} - See details of movie whose database primary key is {movie-id}, or edit movie details (must be logged in)
   
-  /movies/<movie-id>/like - Increase a movie's "like" count by one
+  /movies/{movie-id}/like - Increase a movie's "like" count by one
   
-  /movies/<movie-id>/dislike - Decrease a movie's "like" count by one
+  /movies/{movie-id}/dislike - Decrease a movie's "like" count by one
   
 
 ## Tests
