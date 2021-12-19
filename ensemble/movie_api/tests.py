@@ -5,12 +5,18 @@ from .models import Movie
 from datetime import date, timedelta
 import io
 
+
 class APITests(TestCase):
   def setUp(self):
     release_date = date.fromisoformat('2019-01-01')
     length = timedelta(minutes=20, hours=1)
 
     Movie(title="A movie", 
+          description="foo",
+          release_year=release_date,
+          duration=length).save()
+
+    Movie(title="doesn't come up in search", 
           description="foo",
           release_year=release_date,
           duration=length).save()
@@ -22,8 +28,9 @@ class APITests(TestCase):
     return JSONParser().parse(content)
 
   def test_api(self):
-    self.assertEqual(0, 0)
+    all_movies = self.get_json_response('/movies/')
+    self.assertEqual(len(all_movies), Movie.objects.count())
   
   def test_search(self):
-    print(self.get_json_response('/movies/?search=movie'))
-    self.assertEqual(0, 0)
+    search_results = self.get_json_response('/movies/?search=movie')
+    self.assertEqual(len(search_results), 1)
