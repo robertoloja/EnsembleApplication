@@ -13,6 +13,8 @@
   
   /movies/{movie-id}/dislike - Decrease a movie's "like" count by one (PATCH)
   
+  All of the above endpoints are usable via a browser, due to Django-Rest-Framework's web-based API client. 
+  
 
 ## Tests
 Test suite may be run with the command python manage.py test
