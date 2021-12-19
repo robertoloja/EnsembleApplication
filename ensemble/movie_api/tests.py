@@ -22,5 +22,8 @@ class APITests(TestCase):
     return JSONParser().parse(content)
 
   def test_api(self):
-    print(self.get_json_response('/movies/')[0]['title'])
+    self.assertEqual(0, 0)
+  
+  def test_search(self):
+    print(self.get_json_response('/movies/?search=movie'))
     self.assertEqual(0, 0)
