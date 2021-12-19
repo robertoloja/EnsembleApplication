@@ -12,3 +12,6 @@ API endpoints:
 
 Tests:
 Test suite may be run with the command python manage.py test
+
+Online deployment:
+This API is deployed at https://ensemble-application.herokuapp.com/movies/ with the default user "admin", password "admin".
