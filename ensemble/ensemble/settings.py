@@ -75,6 +75,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ensemble.wsgi.application'
 
+NOSE_ARGS = ['--nocapture', '--nologcapture']
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
